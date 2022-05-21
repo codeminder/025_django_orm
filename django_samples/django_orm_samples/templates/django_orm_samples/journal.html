@@ -1,0 +1,15 @@
+{% extends 'django_orm_samples/base.html' %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<table>
+    
+    <th><td>Документ</td><td>Комментарий</td></th>
+    
+    {% for d in docs %}
+    <tr><td> <a href="{{ d.get_absolute_url }}"> {{d}} </a> </td><td> {{d.comment|linebreaks|truncatechars:50}} </td></tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}
