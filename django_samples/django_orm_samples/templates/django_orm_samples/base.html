@@ -1,4 +1,5 @@
 {% load static %}
+{% load finapp_tags %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,17 +33,18 @@
 <tr>
 <!-- Sidebar слева -->
 	<td valign="top" class="left-chapters">
+	{% getbudg as budgets %}
 	<ul id="leftchapters">
-{%  if type_doc == 0 %}
+{%  if type_doc == None %}
 		<li class="selected"><a href="#">Все документы</a></li>
 {% else %}
-		<li><a href="#">Все документы</a></li>
+		<li><a href="{% url 'journal_full' %}">Все документы</a></li>
 {% endif %}
 {% for d in types_of_docs %}
 	{%  if type_doc == d.type_doc %}
 		<li class="selected">{{d.name}}</a></li>
 	{% else %}
-		<li><a href="{% url 'journal_doc' d.type_doc %}">Прибыль</a></li>
+		<li><a href="{% url 'journal_doc' d.type_doc %}">{{d.name}}</a></li>
 	{% endif %}
 {% endfor %}
 		{% comment %} <li><a href="{% url 'journal_doc' 'cost' %}">Убыль</a></li>
@@ -50,7 +52,7 @@
 		<li><a href="{% url 'journal_doc' 'inventory' %}">Инвентаризация</a></li>
 		<li><a href="{% url 'journal_doc' 'currencyexchange' %}">Обмен валют</a></li> {% endcomment %}
 		<li class="share">
-		<p>Наш канал</p>
+		<p>Мой канал</p>
 		<a class="share-yt" href="https://www.youtube.com/channel/UClJzWfGWuGJL2t-3dYKcHTA/playlists" target="_blank" rel="nofollow"></a>
 		</li>
 	</ul>

@@ -1,0 +1,10 @@
+{% extends 'django_orm_samples/base.html' %}
+
+{% block content %}
+<h3>{{title}}</h3>
+<br>
+Сумма: {{doc.sum}}
+<br>
+{{doc.comment|linebreaks}}
+
+{% endblock %}

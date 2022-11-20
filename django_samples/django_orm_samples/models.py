@@ -41,6 +41,7 @@ class Budget(models.Model):
     
     name = models.CharField(max_length=50, default="")
     short_name = models.CharField(max_length=3, default="")
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
     
     class Meta():
         verbose_name = "Статья"
